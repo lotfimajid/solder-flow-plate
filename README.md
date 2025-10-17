@@ -34,6 +34,11 @@ This will compile the firmware and generate:
 - `main.elf` – compiled binary 
 - `main.hex` – flashable firmware file
 
+If you use ATmega168P run:
+```bash
+make MCU=atmega168p
+```
+
 ---
 
 ## 🔥 Flash to MCU

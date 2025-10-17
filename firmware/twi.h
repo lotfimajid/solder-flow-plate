@@ -1,4 +1,4 @@
-/** 
+/**
  * --------------------------------------------------------------------------------------+
  * @desc        Two Wire Interface / I2C Communication
  * --------------------------------------------------------------------------------------+
@@ -23,7 +23,7 @@
 
   // define register for TWI communication
   // -------------------------------------------------------------------------------------
-  #if defined(__AVR_ATmega16__) || defined(__AVR_ATmega8__) || defined(__AVR_ATmega328P__)
+  #if defined(__AVR_ATmega16__) || defined(__AVR_ATmega8__) || defined(__AVR_ATmega328P__) || defined(__AVR_ATmega168P__)
 
     #define TWI_TWAR            TWAR // TWI (Slave) Address Register
     #define TWI_TWBR            TWBR // TWI Bit Rate Register
@@ -43,13 +43,13 @@
   // -------------------------------------------------------------------------------------
   #ifndef ERROR
     #define ERROR               1
-  #endif 
+  #endif
 
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //
   //        M A S T E R   M O D E
   //
-  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ 
+  // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   // Master Mode - Transmitter / Receiver
   #define TWI_START_ACK         0x08  // A START condition has been transmitted
   #define TWI_REP_START_ACK     0x10  // A repeated START condition has been transmitted
@@ -58,13 +58,13 @@
   #define TWI_MT_SLAW_ACK       0x18  // SLA+W has been transmitted; ACK has been received
   #define TWI_MT_SLAW_NACK      0x20  // SLA+W has been transmitted; NOT ACK has been received
   #define TWI_MT_DATA_ACK       0x28  // Data byte has been transmitted; ACK has been received
-  #define TWI_MT_DATA_NACK      0x30  // Data byte has been transmitted; NOT ACK has been received  
+  #define TWI_MT_DATA_NACK      0x30  // Data byte has been transmitted; NOT ACK has been received
   // Master Receiver Mode
   #define TWI_MR_SLAR_ACK       0x40  // SLA+R has been transmitted; ACK has been received
   #define TWI_MR_SLAR_NACK      0x48  // SLA+R has been transmitted; NOT ACK has been received
   #define TWI_MR_DATA_ACK       0x50  // Data byte has been received; ACK has been received
   #define TWI_MR_DATA_NACK      0x58  // Data byte has been received; NOT ACK has been received
-  
+
   // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   //
   //         S L A V E   M O D E
@@ -74,7 +74,7 @@
   #define TWI_SR_SLAW_ACK       0x60  // Own Slave address has been received; ACK returned
   #define TWI_SR_ALMOA_ACK      0x68  // Arbitration Lost in SLA+R/W as Master; Own Slave address has been received; ACK returned
   #define TWI_SR_GCALL_ACK      0x70  // General call address has been received; ACK returned
-  #define TWI_SR_ALMGA_ACK      0x78  // Arbitration lost in SLA+R/W as Master; General call address has been received; ACK returned  
+  #define TWI_SR_ALMGA_ACK      0x78  // Arbitration lost in SLA+R/W as Master; General call address has been received; ACK returned
   #define TWI_SR_OA_DATA_ACK    0x80  // Previously addressed with own SLA+W; data has been received; ACK returned
   #define TWI_SR_OA_DATA_NACK   0x88  // Previously addressed with own SLA+W; data has been received; NOT ACK returned
   #define TWI_SR_GC_DATA_ACK    0x90  // Previously addressed with general call; data has been received; ACK returned
@@ -123,7 +123,7 @@
 
   // TWI status mask
   #define TWI_STATUS                    ( TWI_TWSR & 0xF8 )
-  
+
   /**
    * @desc    TWI init
    *
@@ -177,5 +177,5 @@
    * @return  void
    */
   void TWI_Stop (void);
-  
+
 #endif

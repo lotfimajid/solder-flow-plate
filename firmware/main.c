@@ -14,11 +14,11 @@
 #define BTN_UP     PD6
 #define BTN_DOWN   PD5
 
-#define TEMP_ADC   3  // PC3
+#define TEMP_ADC   2  // PC2
 #define VOLT_ADC   0  // PC0
 
 #define MAX_TEMP_ADDR 1
-#define V_CONVERT  4.0f
+#define V_CONVERT  50
 #define V_MIN      7
 
 // PID tuning parameters (adjust for your plate)
@@ -148,7 +148,7 @@ uint16_t adc_read(uint8_t ch) {
 }
 
 int get_volt(void) {
-    return (adc_read(VOLT_ADC) / 14);
+    return (adc_read(VOLT_ADC) / V_CONVERT);
 }
 
 int get_temp(void) {
